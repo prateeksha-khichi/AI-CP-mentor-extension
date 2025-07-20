@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "AI CP Mentor",
+  "description": "Your personalized AI assistant for Codeforces",
+  "version": "1.0",
+  "permissions": [
+  "activeTab",
+  "storage",
+  "scripting",
+  "notifications",
+  "alarms"
+],
+"host_permissions": [
+  "https://codeforces.com/*",
+  "https://openrouter.ai/*",
+  "https://www.youtube.com/*",
+  "https://www.youtube-nocookie.com/*"
+],
+
+
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://codeforces.com/profile/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/chart.js"],
+    
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "content_security_policy": {
+  "extension_pages": "script-src 'self'; object-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com;"
+},
+
+
+  
+
+
+  "icons": {
+    "48": "icon.png"
+  }
+}

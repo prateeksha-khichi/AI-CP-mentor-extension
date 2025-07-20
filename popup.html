@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI CP Mentor</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Your existing styles remain unchanged... */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ... All other CSS remains same ... */
+  </style>
+</head>
+<body>
+
+  <button id="modeToggle">🌙</button>
+
+  <h2>👨‍💻 AI CP Mentor</h2>
+  <p id="status">Initializing...</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="roadmap-tab">📌 Roadmap</button>
+    <button class="tab-btn" data-tab="weak-tags-tab">🧠 Weak Tags</button>
+    <button class="tab-btn" data-tab="gpt-tab">🤖 GPT Mentor</button>
+    <button class="tab-btn" data-tab="habit-tab">📅 Habit Tracker</button>
+    <button class="tab-btn" data-tab="contest-tab">✍️ Contest Reflection</button>
+  </div>
+
+  <div class="tab-content" id="roadmap-tab">
+    <h4>🗺️ CP Roadmap</h4>
+    <button id="refreshBtn">🔁 Refresh</button>
+    <ul id="roadmap"></ul>
+    <div style="background: #333; border-radius: 8px; overflow: hidden; margin-bottom: 10px;">
+      <div id="roadmapProgress" style="background: #81c784; color: #000; padding: 4px 8px; width: 0%; font-weight: bold;">0%</div>
+    </div>
+  </div>
+
+  <div class="tab-content hidden" id="weak-tags-tab">
+    <h4>🔍 Your Weak Tags</h4>
+    <ul id="weak-tags">Loading...</ul>
+    <h4>🎯 Recommended Practice</h4>
+    <ul id="recommend-list"></ul>
+  </div>
+
+  <div class="tab-content hidden" id="gpt-tab">
+    <h4>🤖 GPT-Powered Mentor</h4>
+    <input type="text" id="query" placeholder="Ask about a topic (e.g., Greedy)" style="width: 100%; padding: 8px; border-radius: 6px;" />
+    <button id="askBtn">Ask GPT</button>
+    <div id="response"></div>
+  </div>
+
+  <div class="tab-content hidden" id="habit-tab">
+    <h4>📅 CP Habit Tracker</h4>
+    <p>✅ Mark if you solved a problem today:</p>
+    <div class="habit-container" id="habit-days">
+      <label><input type="checkbox" data-day="Mon" /> Mon</label>
+      <label><input type="checkbox" data-day="Tue" /> Tue</label>
+      <label><input type="checkbox" data-day="Wed" /> Wed</label>
+      <label><input type="checkbox" data-day="Thu" /> Thu</label>
+      <label><input type="checkbox" data-day="Fri" /> Fri</label>
+      <label><input type="checkbox" data-day="Sat" /> Sat</label>
+      <label><input type="checkbox" data-day="Sun" /> Sun</label>
+    </div>
+    <p id="streak">🔥 0-day streak</p>
+    <div class="progress-bar"><div id="habitProgressBar" class="progress-bar-fill" style="width: 0%"></div></div>
+  </div>
+
+  <div class="tab-content hidden" id="contest-tab">
+    <h4>✍️ Contest Reflection Generator</h4>
+
+    <p>Enter your Codeforces handle:</p>
+    <input type="text" id="cfHandle" placeholder="e.g., tourist" style="width: 100%; padding: 8px; border-radius: 6px; margin-bottom: 10px;" />
+
+    <p>Paste your recent Codeforces contest performance summary:</p>
+    <textarea id="contestInput" placeholder="Example: Solved A (1 WA), stuck on B, didn’t try C..." rows="5" style="width: 100%; padding: 8px;"></textarea>
+    <button id="reflectBtn">🧠 Reflect</button>
+    <div id="reflectionResult" style="margin-top: 10px;"></div>
+
+    <!-- Heatmap -->
+    
+
+  <canvas class="confetti" id="confettiCanvas"></canvas>
+  <button id="gptFloatBtn" title="Ask GPT">🤖</button>
+
+  <!-- Chart.js already loaded above -->
+   
+  <script src="popup.js"></script>
+</body>
+</html>
